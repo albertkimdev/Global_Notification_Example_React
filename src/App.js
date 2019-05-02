@@ -1,22 +1,22 @@
 import React from "react";
 
-// Add the router parts
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-// Add the new components you created
 import Main from "./Main";
 import Profile from "./Profile";
 
-// Add the bulma css file into the project
+// Add the FlashMessage component
+import FlashMessage from "./FlashMessage";
+
 import "bulma/css/bulma.min.css";
 
 function App() {
-  // Make the App component
-  // Handle the routes
+  // Insert the flashmessage in a top level area of your app.
   return (
     <Router>
       <Route path="/" exact component={Main} />
       <Route path="/profile" component={Profile} />
+      <FlashMessage show={true} />
     </Router>
   );
 }
