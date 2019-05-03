@@ -20,22 +20,24 @@ export default class GlobalProvider extends React.Component {
   // Fat arrow function to automatically bind this
   // function to this class
   setMessage = (message, status) => {
-    // Update the state
-    this.setState({
-      ...this.state,
-      showFlash: true,
-      message,
-      status
-    });
-
-    // After 3 seconds change the state to
-    // not show the notification
-    setTimeout(() => {
+    // Only change the state if it's already false
+    if (!this.state.showFlash) {
       this.setState({
         ...this.state,
-        showFlash: false
+        showFlash: true,
+        message,
+        status
       });
-    }, 3000); // 3000 milliseconds = 3 seconds
+
+      // After 3 seconds change the state to
+      // not show the notification
+      setTimeout(() => {
+        this.setState({
+          ...this.state,
+          showFlash: false
+        });
+      }, 3000); // 3000 milliseconds = 3 seconds
+    }
   };
 
   render() {
